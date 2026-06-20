@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+Disallow: /kvkk/
+Disallow: /cerez-politikasi/
+Disallow: /en/kvkk/
+Disallow: /en/cerez-politikasi/
+
+Sitemap: https://elementboya.com.tr/sitemap.xml
