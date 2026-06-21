@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Element Boya — Elektrostatik Toz Boya Üreticisi</title>
+<meta name="description" content="Element Elektrostatik Toz Boya — Türkiye'nin yenilikçi toz boya üreticisi. Polyester, epoksi, hibrit ve özel efekt serileri ile endüstriyel kaplama çözümleri."/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#E63226;
+  --dark:#111;
+  --gray:#666;
+  --light:#f5f5f5;
+  --white:#fff;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--dark);background:var(--white);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-logo img{height:36px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-links .lang{font-size:11px;color:var(--gray);border-left:1px solid #ddd;padding-left:24px;margin-left:8px}
+.nav-links .lang a{margin-right:8px}
+.nav-links .lang a.active{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff;padding:10px 24px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:#c42a20}
+.mobile-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 48px 80px 48px}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:24px}
+.hero-title{font-family:var(--font-display);font-size:clamp(56px,7vw,96px);line-height:.95;letter-spacing:-1px;margin-bottom:24px}
+.hero-title span{display:block;color:var(--red)}
+.hero-desc{font-size:15px;line-height:1.7;color:var(--gray);max-width:420px;margin-bottom:40px}
+.hero-stats{display:flex;gap:40px}
+.hero-stat-num{font-family:var(--font-display);font-size:42px;color:var(--dark)}
+.hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-top:4px}
+.hero-visual{position:relative;overflow:hidden}
+.hero-visual img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.hero-visual .red-block{position:absolute;bottom:0;right:0;width:35%;height:25%;background:var(--red);display:flex;align-items:center;justify-content:center}
+.hero-visual .red-block span{font-family:var(--font-display);font-size:20px;color:#fff;letter-spacing:2px}
+
+/* SECTION COMMON */
+.section{padding:100px 48px}
+.section-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.section-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);line-height:1;margin-bottom:24px}
+.section-desc{font-size:15px;line-height:1.7;color:var(--gray);max-width:520px}
+
+/* MISSION */
+.mission{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:80vh}
+.mission-img{position:relative;overflow:hidden}
+.mission-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.mission-img .overlay{position:absolute;top:40px;left:40px;right:40px}
+.mission-img .overlay span{font-family:var(--font-display);font-size:14px;color:#fff;letter-spacing:2px;background:var(--red);padding:8px 16px}
+.mission-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;background:var(--light)}
+.mission-content .section-title{margin-bottom:32px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:8px 16px;border:1px solid #ddd;transition:all .2s}
+.tag:hover{border-color:var(--red);color:var(--red)}
+
+/* PRODUCTS */
+.products{background:var(--white)}
+.products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.product-card{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--light);cursor:pointer}
+.product-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:all .4s}
+.product-card:hover img{filter:grayscale(0%);transform:scale(1.05)}
+.product-card .card-overlay{position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(transparent,rgba(0,0,0,.7));transform:translateY(20px);opacity:0;transition:all .3s}
+.product-card:hover .card-overlay{transform:translateY(0);opacity:1}
+.card-overlay h3{font-family:var(--font-display);font-size:28px;color:#fff;margin-bottom:4px}
+.card-overlay p{font-size:12px;color:rgba(255,255,255,.7)}
+.product-card .card-tag{position:absolute;top:24px;left:24px;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px}
+.product-features{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2px}
+.feature-box{padding:40px 32px;border:1px solid #eee;text-align:center}
+.feature-box .num{font-family:var(--font-display);font-size:36px;color:var(--red)}
+.feature-box .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-top:8px}
+
+/* SECTORS */
+.sectors{background:var(--dark);color:#fff;overflow:hidden}
+.sectors .section-label{color:var(--red)}
+.sectors .section-title{color:#fff}
+.sectors .section-desc{color:rgba(255,255,255,.5)}
+.sectors-header{margin-bottom:64px}
+.sectors-scroll{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.sector-card{position:relative;aspect-ratio:3/4;overflow:hidden}
+.sector-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.7);transition:all .4s}
+.sector-card:hover img{filter:grayscale(0%) brightness(.8);transform:scale(1.05)}
+.sector-card .sector-info{position:absolute;bottom:0;left:0;right:0;padding:24px}
+.sector-card h3{font-family:var(--font-display);font-size:24px;color:#fff}
+.sector-card p{font-size:11px;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* GLOBAL / EXPORT */
+.global{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.global-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px}
+.global-content .section-title{margin-bottom:24px}
+.countries{display:flex;flex-wrap:wrap;gap:6px;margin-top:32px}
+.country{font-size:11px;font-weight:500;letter-spacing:.5px;padding:6px 14px;background:var(--light);transition:all .2s}
+.country:hover{background:var(--red);color:#fff}
+.global-visual{position:relative;background:var(--red);display:flex;align-items:center;justify-content:center;padding:80px}
+.global-visual .big-num{font-family:var(--font-display);font-size:clamp(120px,15vw,220px);color:#fff;opacity:.15;position:absolute}
+.global-visual .stat-block{position:relative;text-align:center}
+.global-visual .stat-num{font-family:var(--font-display);font-size:80px;color:#fff}
+.global-visual .stat-label{font-size:13px;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:2px}
+
+/* QUALITY */
+.quality{background:var(--light)}
+.quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.quality-card{background:var(--white);padding:48px 40px;position:relative;overflow:hidden;transition:all .3s}
+.quality-card:hover{background:var(--dark);color:#fff}
+.quality-card:hover .quality-icon{color:#fff}
+.quality-card:hover .quality-desc{color:rgba(255,255,255,.6)}
+.quality-icon{font-family:var(--font-display);font-size:48px;color:var(--red);margin-bottom:16px}
+.quality-card h3{font-family:var(--font-display);font-size:28px;margin-bottom:12px}
+.quality-desc{font-size:13px;line-height:1.7;color:var(--gray)}
+
+/* SHOP CTA */
+.shop-cta{display:grid;grid-template-columns:1fr 1fr;min-height:50vh}
+.shop-cta-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px}
+.shop-cta-content .section-title{margin-bottom:16px}
+.shop-cta-content .section-desc{margin-bottom:32px}
+.btn-row{display:flex;gap:12px}
+.btn-primary{background:var(--red);color:#fff;padding:14px 32px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:background .2s;display:inline-block}
+.btn-primary:hover{background:#c42a20}
+.btn-outline{border:1px solid var(--dark);padding:14px 32px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:all .2s;display:inline-block}
+.btn-outline:hover{background:var(--dark);color:#fff}
+.shop-cta-visual{position:relative;overflow:hidden}
+.shop-cta-visual img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.shop-cta-stats{display:flex;gap:40px;margin-top:32px}
+.shop-cta-stats .hero-stat-num{font-size:32px}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.contact-info{background:var(--dark);color:#fff;padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.contact-info .section-label{color:var(--red)}
+.contact-info .section-title{color:#fff;margin-bottom:40px}
+.contact-block{margin-bottom:24px}
+.contact-block h4{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:8px}
+.contact-block p,.contact-block a{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8}
+.contact-block a:hover{color:var(--red)}
+.contact-form{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;background:var(--light)}
+.contact-form .section-title{margin-bottom:40px}
+.form-group{margin-bottom:20px}
+.form-group label{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600;display:block;margin-bottom:8px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 16px;border:1px solid #ddd;background:#fff;font-family:var(--font-body);font-size:14px;transition:border .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--red)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--dark);color:#fff;padding:64px 48px 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:16px;max-width:300px}
+.footer-col h4{font-family:var(--font-display);font-size:18px;margin-bottom:16px;letter-spacing:1px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+.footer-bottom a{color:rgba(255,255,255,.3);margin-left:16px}
+.footer-bottom a:hover{color:var(--red)}
+.footer-logo img{height:28px;filter:brightness(0) invert(1);margin-bottom:4px}
+
+/* BREAKSLIDE */
+.breakslide{background:var(--dark);padding:60px 48px;text-align:center}
+.breakslide h2{font-family:var(--font-display);font-size:clamp(48px,6vw,80px);color:#fff;letter-spacing:2px}
+.breakslide h2 span{color:var(--red)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero,.mission,.global,.contact,.shop-cta{grid-template-columns:1fr}
+  .hero-visual{min-height:50vh}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .sectors-scroll{grid-template-columns:repeat(2,1fr)}
+  .quality-grid{grid-template-columns:repeat(2,1fr)}
+  .product-features{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .section{padding:60px 24px}
+  .hero-content{padding:60px 24px}
+  .mission-content,.global-content,.shop-cta-content,.contact-info,.contact-form{padding:60px 24px}
+}
+@media(max-width:640px){
+  .products-grid,.sectors-scroll,.quality-grid{grid-template-columns:1fr}
+  .product-features{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:16px}
+  .form-row{grid-template-columns:1fr}
+  .btn-row{flex-direction:column}
+  .countries{gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="/element-logo.png" alt="Element Boya"/></a>
+  <div class="nav-links">
+    <a href="#products">Ürünler</a>
+    <a href="#sectors">Sektörler</a>
+    <a href="#quality">Kalite</a>
+    <a href="#global">İhracat</a>
+    <a href="#contact">İletişim</a>
+    <span class="lang">
+      <a href="/" class="active">TR</a>
+      <a href="/en">EN</a>
+      <a href="/fr">FR</a>
+      <a href="/ru">RU</a>
+    </span>
+    <a href="https://shopelementboya.com" class="nav-cta">Online Sipariş</a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-label">Elektrostatik Toz Boya Üreticisi</span>
+    <h1 class="hero-title">KALICI<span>RENKLER.</span></h1>
+    <p class="hero-desc">Polyester, epoksi ve hibrit serileri ile endüstrinin renk standardını yeniden tanımlıyoruz. Türkiye'den 18 ülkeye ihracat.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">700+</div>
+        <div class="hero-stat-label">Aktif Müşteri</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Yıl Deneyim</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">6.000+</div>
+        <div class="hero-stat-label">Ton / Yıl</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="/images/about/gallery-1.jpg" alt="Element Boya üretim"/>
+    <div class="red-block"><span>ELEMENT BOYA</span></div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="mission-img">
+    <img src="/images/about/gallery-2.jpg" alt="Üretim tesisi"/>
+    <div class="overlay"><span>— MİSYONUMUZ</span></div>
+  </div>
+  <div class="mission-content">
+    <h2 class="section-title">TÜRKİYE'NİN EN YENİLİKÇİ TOZ BOYA ÜRETİCİSİ.</h2>
+    <p class="section-desc">Endüstriyel kaplamada renk, dayanıklılık ve sürdürülebilirliği bir arada sunuyoruz. Yerli üretim — global kalite.</p>
+    <div class="tags">
+      <span class="tag">POLYESTER</span>
+      <span class="tag">TGIC</span>
+      <span class="tag">HAA</span>
+      <span class="tag">EPOKSİ</span>
+      <span class="tag">HİBRİT</span>
+      <span class="tag">METALİK</span>
+      <span class="tag">TEXTURE</span>
+      <span class="tag">MAT</span>
+      <span class="tag">PARLAK</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products" id="products">
+  <div class="products-header">
+    <div>
+      <span class="section-label">Ürün Portföyü</span>
+      <h2 class="section-title">HER YÜZEY İÇİN<br/>ÖZEL BİR FORMÜL.</h2>
+    </div>
+    <a href="/ral-renkleri" class="btn-outline">RAL Renk Motoru →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="/images/about/gallery-3.jpg" alt="Polyester Toz Boya"/>
+      <span class="card-tag">01</span>
+      <div class="card-overlay">
+        <h3>POLYESTER</h3>
+        <p>Dış cephe, UV dayanımı, mimari uygulamalar</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="/images/about/gallery-4.jpg" alt="Hibrit Toz Boya"/>
+      <span class="card-tag">02</span>
+      <div class="card-overlay">
+        <h3>HİBRİT</h3>
+        <p>İç mekan, ekonomik ve yüksek performans</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="/images/about/gallery-5.jpg" alt="Epoksi Toz Boya"/>
+      <span class="card-tag">03</span>
+      <div class="card-overlay">
+        <h3>EPOKSİ</h3>
+        <p>Kimyasal dayanım, teknik yüzey koruması</p>
+      </div>
+    </div>
+  </div>
+  <div class="product-features">
+    <div class="feature-box">
+      <div class="num">216</div>
+      <div class="label">RAL Renk</div>
+    </div>
+    <div class="feature-box">
+      <div class="num">9</div>
+      <div class="label">Renk Ailesi</div>
+    </div>
+    <div class="feature-box">
+      <div class="num">1000+</div>
+      <div class="label">Reçete</div>
+    </div>
+    <div class="feature-box">
+      <div class="num">∞</div>
+      <div class="label">Özel Ton</div>
+    </div>
+  </div>
+</section>
+
+<!-- BREAKSLIDE -->
+<div class="breakslide">
+  <h2>ELEMENT<span>.</span></h2>
+</div>
+
+<!-- SECTORS -->
+<section class="section sectors" id="sectors">
+  <div class="sectors-header">
+    <span class="section-label">Sektörler</span>
+    <h2 class="section-title">HANGİ SEKTÖRLERE<br/>ÜRETİYORUZ?</h2>
+    <p class="section-desc">Sanayinin sekiz farklı ana kolunda referans projelerimiz var.</p>
+  </div>
+  <div class="sectors-scroll">
+    <div class="sector-card">
+      <img src="/images/sectors/aluminyum-dograma.jpg" alt="Alüminyum Doğrama"/>
+      <div class="sector-info"><h3>ALÜMİNYUM DOĞRAMA</h3><p>Cephe & profil sistemleri</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/beyaz-esya.jpg" alt="Beyaz Eşya"/>
+      <div class="sector-info"><h3>BEYAZ EŞYA</h3><p>Seri üretim kaplamaları</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/otomotiv.jpg" alt="Otomotiv"/>
+      <div class="sector-info"><h3>OTOMOTİV</h3><p>Yan sanayi bileşenleri</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/mobilya.jpg" alt="Mobilya"/>
+      <div class="sector-info"><h3>METAL MOBİLYA</h3><p>İç mekan ekipmanları</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/tarim-makineleri.jpg" alt="Tarım Makineleri"/>
+      <div class="sector-info"><h3>TARIM MAKİNELERİ</h3><p>Ağır koşul dayanımı</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/mimari-cephe.jpg" alt="Mimari Cephe"/>
+      <div class="sector-info"><h3>MİMARİ CEPHE</h3><p>Estetik & UV koruması</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/elektrik-panolari.jpg" alt="Elektrik Panoları"/>
+      <div class="sector-info"><h3>ELEKTRİK PANOLARI</h3><p>Teknik kaplama</p></div>
+    </div>
+    <div class="sector-card">
+      <img src="/images/sectors/genel-metal.jpg" alt="Genel Metal"/>
+      <div class="sector-info"><h3>GENEL METAL</h3><p>Makine & konstrüksiyon</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="global" id="global">
+  <div class="global-content">
+    <span class="section-label">Global Erişim</span>
+    <h2 class="section-title">TÜRKİYE'DEN<br/>18 ÜLKEYE.</h2>
+    <p class="section-desc">Avrupa, Kafkasya, Orta Doğu, Kuzey Afrika ve Orta Asya'da aktif ticaret.</p>
+    <div class="countries">
+      <span class="country">Rusya</span>
+      <span class="country">Ukrayna</span>
+      <span class="country">Azerbaycan</span>
+      <span class="country">Gürcistan</span>
+      <span class="country">Kazakistan</span>
+      <span class="country">Kırgızistan</span>
+      <span class="country">Polonya</span>
+      <span class="country">Çekya</span>
+      <span class="country">Avusturya</span>
+      <span class="country">Slovenya</span>
+      <span class="country">Romanya</span>
+      <span class="country">Bulgaristan</span>
+      <span class="country">Fas</span>
+      <span class="country">Cezayir</span>
+      <span class="country">Tunus</span>
+      <span class="country">Ürdün</span>
+      <span class="country">Lübnan</span>
+      <span class="country">Irak</span>
+    </div>
+  </div>
+  <div class="global-visual">
+    <span class="big-num">18</span>
+    <div class="stat-block">
+      <div class="stat-num">18</div>
+      <div class="stat-label">İhracat Ülkesi</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section class="section quality" id="quality">
+  <span class="section-label">Kalite & Sertifikasyon</span>
+  <h2 class="section-title">HATA KABUL<br/>ETMİYORUZ.</h2>
+  <div class="quality-grid">
+    <div class="quality-card">
+      <div class="quality-icon">ISO</div>
+      <h3>ISO KALİTE SİSTEMİ</h3>
+      <p class="quality-desc">ISO 9001 prensiplerine dayalı süreç yönetimi ve sürekli iyileştirme döngüsü.</p>
+    </div>
+    <div class="quality-card">
+      <div class="quality-icon">LOT</div>
+      <h3>LOT TAKİP SİSTEMİ</h3>
+      <p class="quality-desc">Her üretim partisi için ham maddeden teslimata kadar tam izlenebilirlik.</p>
+    </div>
+    <div class="quality-card">
+      <div class="quality-icon">24</div>
+      <h3>2 YIL NUMUNE SAKLAMA</h3>
+      <p class="quality-desc">Üretilen her renk için iki yıl boyunca referans numune arşivlenir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP CTA -->
+<section class="shop-cta">
+  <div class="shop-cta-content">
+    <span class="section-label">Online Mağaza</span>
+    <h2 class="section-title">HEMEN ONLINE<br/>SİPARİŞ VERİN.</h2>
+    <p class="section-desc">shopelementboya.com üzerinden RAL renk kartelası, kg bazlı fiyatlandırma ve hızlı sevkiyat.</p>
+    <div class="btn-row">
+      <a href="https://shopelementboya.com" class="btn-primary">Mağazaya Git</a>
+      <a href="#contact" class="btn-outline">Katalog İndir</a>
+    </div>
+    <div class="shop-cta-stats">
+      <div>
+        <div class="hero-stat-num" style="font-size:32px">24 saat</div>
+        <div class="hero-stat-label">Sipariş Onayı</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" style="font-size:32px">€ / kg</div>
+        <div class="hero-stat-label">Şeffaf Fiyat</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" style="font-size:32px">700+</div>
+        <div class="hero-stat-label">Aktif Bayi</div>
+      </div>
+    </div>
+  </div>
+  <div class="shop-cta-visual">
+    <img src="/images/about/gallery-6.jpg" alt="Element Boya ürün"/>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <span class="section-label">İletişim</span>
+    <h2 class="section-title">BİRLİKTE<br/>ÇALIŞALIM.</h2>
+    <div class="contact-block">
+      <h4>Adres</h4>
+      <p>Element Boya San. ve Tic. A.Ş.<br/>Aydınlı - Birlik OSB Mah. 6. Sok. No:5<br/>34953 Tuzla / İstanbul</p>
+    </div>
+    <div class="contact-block">
+      <h4>Telefon</h4>
+      <p><a href="tel:+902165932980">+90 216 593 29 80</a></p>
+    </div>
+    <div class="contact-block">
+      <h4>E-posta</h4>
+      <p><a href="mailto:info@elementboya.com">info@elementboya.com</a></p>
+      <p><a href="mailto:export@elementboya.com">export@elementboya.com</a></p>
+    </div>
+    <div class="contact-block">
+      <h4>Çalışma Saatleri</h4>
+      <p>Pzt – Cum: 08:00 – 18:00 (GMT +03:00)</p>
+    </div>
+  </div>
+  <div class="contact-form">
+    <h2 class="section-title">TEKLİF AL.</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ad Soyad</label>
+          <input type="text" placeholder="Adınız Soyadınız"/>
+        </div>
+        <div class="form-group">
+          <label>Firma</label>
+          <input type="text" placeholder="Firma adı"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>E-posta</label>
+          <input type="email" placeholder="E-posta adresiniz"/>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+90"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Konu</label>
+        <select>
+          <option>Teklif talebi</option>
+          <option>Numune talebi</option>
+          <option>Bayilik başvurusu</option>
+          <option>Diğer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mesaj</label>
+        <textarea placeholder="Mesajınız..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Gönder</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="/element-logo.png" alt="Element Boya"/></div>
+      <p>Elektrostatik toz boya üreticisi. Türkiye'den 18 ülkeye, her metale — renk, dayanıklılık ve teknik standart.</p>
+    </div>
+    <div class="footer-col">
+      <h4>ÜRÜNLER</h4>
+      <a href="#products">Polyester TGIC</a>
+      <a href="#products">Polyester HAA</a>
+      <a href="#products">Hibrit Seriler</a>
+      <a href="#products">Saf Epoksi</a>
+      <a href="#products">Özel Efektler</a>
+      <a href="/ral-renkleri">RAL Renk Motoru</a>
+    </div>
+    <div class="footer-col">
+      <h4>KURUMSAL</h4>
+      <a href="/hakkimizda">Hakkımızda</a>
+      <a href="#quality">Kalite</a>
+      <a href="/toz-boya-nedir">Toz Boya Nedir</a>
+      <a href="/katalog">Ürün Kataloğu</a>
+      <a href="/belgeler">Belgeler</a>
+      <a href="#global">İhracat</a>
+    </div>
+    <div class="footer-col">
+      <h4>İLETİŞİM</h4>
+      <a href="#contact">Teklif Al</a>
+      <a href="https://shopelementboya.com">Online Mağaza</a>
+      <a href="mailto:info@elementboya.com">info@elementboya.com</a>
+      <a href="tel:+902165932980">+90 216 593 29 80</a>
+      <a href="/kvkk">KVKK</a>
+      <a href="/cerez-politikasi">Çerez Politikası</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Element Elektrostatik Toz Boya. Tüm hakları saklıdır.</span>
+    <div>
+      <a href="https://www.linkedin.com/company/element-powdercoating">LinkedIn</a>
+      <a href="https://www.instagram.com/element_powdercoatings/">Instagram</a>
+      <a href="https://www.youtube.com/@elementpowdercoating1288">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
